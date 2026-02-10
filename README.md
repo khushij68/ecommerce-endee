@@ -35,7 +35,7 @@ Unlike traditional search that looks for exact character matches, this architect
 ---
 
 ## 🏗️ Tech Stack
-- **Vector DB**: [Endee](http://localhost:8080) (384D Cosine Similarity)
+- **Vector DB**: [Endee](https://github.com/endee-io/endee) (384D Cosine Similarity)
 - **Backend**: Python (Flask, Sentence-Transformers, NumPy)
 - **Frontend**: Vanilla JS (Modern CSS/HTML5)
 - **Model**: `all-MiniLM-L6-v2` (Lightweight and accurate)
@@ -158,3 +158,4 @@ Before pushing to GitHub, you may want to delete the following temporary scripts
 ```
 
 Developed with ❤️ using **Endee Vector Database**.
+
