@@ -14,6 +14,11 @@ A high-performance semantic search-powered e-commerce application. This project 
 - **Modern UI**: A premium dark-themed experience with micro-animations.
 
 ---
+## Screenshots
+
+![Screenshot 1](https://github.com/khushij68/ecommerce-endee/blob/main/Screenshot%202026-02-11%20005135.png)
+
+![Screenshot 2](https://github.com/khushij68/ecommerce-endee/blob/main/Screenshot%202026-02-11%20014505.png)
 
 ## 🧠 How it Works: Semantic Search & RAG
 
@@ -160,6 +165,7 @@ Before pushing to GitHub, you may want to delete the following temporary scripts
 ```
 
 Developed with ❤️ using **Endee Vector Database**.
+
 
 
 
