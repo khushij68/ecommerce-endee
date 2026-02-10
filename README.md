@@ -2,7 +2,7 @@
 
 A high-performance semantic search-powered e-commerce application. This project demonstrates how to use the **Endee Vector Database** to build a modern discovery experience where users can find products based on meaning, not just keywords.
 
-[![Demo Video](https://drive.google.com/file/d/1eIbE0RxEJN45cLcIU85_OtMTzkJp0lXV/view?usp=sharing)](https://drive.google.com/file/d/1lSb7K8OVRc_cQyiBr7Lt8Igu-FaKcoJq/view?usp=sharing)
+[![Demo Video]](https://drive.google.com/file/d/1lSb7K8OVRc_cQyiBr7Lt8Igu-FaKcoJq/view?usp=sharing)
 
 ---
 
@@ -160,5 +160,6 @@ Before pushing to GitHub, you may want to delete the following temporary scripts
 ```
 
 Developed with ❤️ using **Endee Vector Database**.
+
 
 
