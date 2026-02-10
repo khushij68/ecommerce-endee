@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endee Product Discovery - Semantic Search Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="url(#gradient)" />
+                        <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white" opacity="0.9" />
+                        <defs>
+                            <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#667eea" />
+                                <stop offset="100%" stop-color="#764ba2" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Endee Discovery</span>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="productCount">---</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="vectorDim">384</span>
+                        <span class="stat-label">Dimensions</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <h1 class="search-title">Discover Products with Semantic Search</h1>
+                    <p class="search-subtitle">Powered by Endee Vector Database - Find products by meaning, not just
+                        keywords</p>
+
+                    <div class="search-box">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <input type="text" id="searchInput"
+                            placeholder='Try "cozy winter sweater" or "minimalist desk accessories"...'
+                            autocomplete="off" />
+                        <button id="searchBtn" class="search-btn">Search</button>
+                    </div>
+
+                    <!-- Quick Search Examples -->
+                    <div class="quick-searches">
+                        <span class="quick-label">Try:</span>
+                        <button class="quick-chip" data-query="luxury leather accessories">Luxury leather</button>
+                        <button class="quick-chip" data-query="gifts for tech enthusiasts">Tech gifts</button>
+                        <button class="quick-chip" data-query="minimalist home decor">Minimalist decor</button>
+                        <button class="quick-chip" data-query="professional work attire">Work attire</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="filters-section" id="filtersSection" style="display: none;">
+                <div class="filters-container">
+                    <h3 class="filters-title">Refine Results</h3>
+
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select id="categoryFilter" class="filter-select">
+                                <option value="All">All Categories</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Price Range</label>
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" value="0" min="0"
+                                    class="price-input">
+                                <span class="price-separator">-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" value="1000" min="0"
+                                    class="price-input">
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Minimum Rating</label>
+                            <select id="ratingFilter" class="filter-select">
+                                <option value="0">All Ratings</option>
+                                <option value="3">3+ Stars</option>
+                                <option value="4">4+ Stars</option>
+                                <option value="4.5">4.5+ Stars</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Results</label>
+                            <select id="resultsCount" class="filter-select">
+                                <option value="10">10 Results</option>
+                                <option value="20">20 Results</option>
+                                <option value="50">50 Results</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="applyFilters" class="apply-filters-btn">Apply Filters</button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2 id="resultsTitle">Search Results</h2>
+                    <p id="resultsSubtitle" class="results-subtitle"></p>
+                </div>
+
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Searching with semantic AI...</p>
+                </div>
+
+                <div id="resultsGrid" class="results-grid"></div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="32" fill="#f3f4f6" />
+                        <path d="M28 28a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM44 44l-8-8" stroke="#9ca3af" stroke-width="3"
+                            stroke-linecap="round" />
+                    </svg>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search or filters</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Product Modal -->
+        <div id="productModal" class="modal" style="display: none;">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="closeModal">&times;</button>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
